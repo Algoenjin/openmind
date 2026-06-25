@@ -244,12 +244,14 @@ const statusStyles: Record<Eventt["status"], string> = {
   tickets: "border-accent text-accent hover:bg-accent hover:text-accent-foreground",
   low: "border-accent text-accent hover:bg-accent hover:text-accent-foreground",
   "sold out": "border-border text-muted cursor-not-allowed",
+  past: "border-border text-muted",
 };
 
 const statusLabel: Record<Eventt["status"], string> = {
   tickets: "Tickets",
   low: "Low Tickets",
   "sold out": "Sold Out",
+  past: "Past",
 };
 
 export function EventRow({ event }: { event: Eventt }) {

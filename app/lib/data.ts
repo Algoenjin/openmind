@@ -104,14 +104,19 @@ export type Eventt = {
   city: string;
   country: string;
   lineup: string;
-  status: "tickets" | "low" | "sold out";
+  status: "tickets" | "low" | "sold out" | "past";
 };
 
 export const events: Eventt[] = [
   { day: "26", month: "JUN", year: "2026", venue: "Business Techno", city: "Stockholm", country: "SE", lineup: "Ottman Gronberg, Not Your Ordinary Human, Inspektorn", status: "low" },
   { day: "24", month: "JUL", year: "2026", venue: "OpenMind Private", city: "Stockholm", country: "SE", lineup: "Line-up coming soon", status: "tickets" },
   { day: "24", month: "AUG", year: "2026", venue: "Slakthuset", city: "Stockholm", country: "SE", lineup: "OpenMind Label Night", status: "tickets" },
-  { day: "31", month: "OCT", year: "2026", venue: "Fact", city: "Barcelona", country: "ES", lineup: "Ottman Gronberg", status: "tickets" },
+  { day: "31", month: "OCT", year: "2026", venue: "Fact", city: "Barcelona", country: "ES", lineup: "Ottman Gronberg, Not Your Ordinary Human, Ulrika Vincent", status: "tickets" },
+];
+
+/** Past shows — most recent first. */
+export const pastEvents: Eventt[] = [
+  { day: "22", month: "MAY", year: "2026", venue: "Business Techno", city: "Stockholm", country: "SE", lineup: "Not Your Ordinary Human", status: "past" },
 ];
 
 export type Episode = {
@@ -126,11 +131,11 @@ export type Episode = {
 
 export const episodes: Episode[] = [
   { no: "048", title: "OpenMind Radio 048", guest: "Ottman Gronberg", date: "Jun 2026", duration: "60:00", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3" },
-  { no: "047", title: "OpenMind Radio 047", guest: "Nina Sandström — Guest Mix", date: "Jun 2026", duration: "60:00", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" },
-  { no: "046", title: "OpenMind Radio 046", guest: "Void Sector", date: "May 2026", duration: "60:00", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3" },
-  { no: "045", title: "OpenMind Radio 045", guest: "KILN", date: "May 2026", duration: "60:00", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3" },
-  { no: "044", title: "OpenMind Radio 044", guest: "Astrid Falk", date: "Apr 2026", duration: "60:00", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3" },
-  { no: "043", title: "OpenMind Radio 043", guest: "Subrosa", date: "Apr 2026", duration: "60:00", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3" },
+  { no: "047", title: "OpenMind Radio 047", guest: "Not Your Ordinary Human", date: "Jun 2026", duration: "60:00", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" },
+  { no: "046", title: "OpenMind Radio 046", guest: "Inspektorn", date: "May 2026", duration: "60:00", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3" },
+  { no: "045", title: "OpenMind Radio 045", guest: "Ulrika Vincent", date: "May 2026", duration: "60:00", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3" },
+  { no: "044", title: "OpenMind Radio 044", guest: "Junior Lindgren", date: "Apr 2026", duration: "60:00", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3" },
+  { no: "043", title: "OpenMind Radio 043", guest: "Teh Ellis", date: "Apr 2026", duration: "60:00", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3" },
 ];
 
 export type Product = {
