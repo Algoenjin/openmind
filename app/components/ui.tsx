@@ -52,26 +52,44 @@ export function Marquee({
   items: string[];
   fast?: boolean;
 }) {
-  const row = [...items, ...items];
-  return (
-    <div className="flex overflow-hidden border-y border-border bg-accent">
-      <div
-        className={`flex shrink-0 items-center whitespace-nowrap ${
-          fast ? "animate-marquee-fast" : "animate-marquee"
-        }`}
-      >
-        {row.map((item, i) => (
-          <span
-            key={i}
-            className="heading flex items-center gap-6 px-6 py-2.5 text-base text-accent-foreground"
-          >
-            {item}
-            <span aria-hidden className="text-accent-foreground/60">
-              ✶
-            </span>
+  // Two identical groups. Each is at least viewport-wide (min-w-full) and
+  // scrolls a full -100% of its own width, so the second group slides exactly
+  // into the first's place — a gap-free, seamless loop at any screen width.
+  const renderGroup = (key: string, hidden: boolean) => (
+    <div
+      key={key}
+      aria-hidden={hidden || undefined}
+      className={`flex min-w-full shrink-0 items-center justify-around whitespace-nowrap will-change-transform group-hover:[animation-play-state:paused] ${
+        fast ? "animate-marquee-fast" : "animate-marquee"
+      }`}
+    >
+      {[...items, ...items].map((item, i) => (
+        <span
+          key={i}
+          className="flex items-center gap-6 px-6 py-6 text-2xl font-bold uppercase tracking-[0.05em] text-accent-foreground"
+        >
+          {item}
+          <span aria-hidden className="font-normal text-accent-foreground/60">
+            |
           </span>
-        ))}
-      </div>
+        </span>
+      ))}
+    </div>
+  );
+
+  return (
+    <div className="group relative flex overflow-hidden border-y border-border bg-accent">
+      {renderGroup("a", false)}
+      {renderGroup("b", true)}
+      {/* edge fades — text dissolves into the accent instead of hard-clipping */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-accent to-transparent sm:w-24"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-accent to-transparent sm:w-24"
+      />
     </div>
   );
 }

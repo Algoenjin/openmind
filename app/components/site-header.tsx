@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV } from "../lib/data";
 import { Logo } from "./logo";
+import { SocialLinks } from "./social-icon";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -27,6 +28,7 @@ export function SiteHeader() {
     pathname === href || pathname.startsWith(href + "/");
 
   return (
+    <>
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 sm:px-8">
         {/* wordmark */}
@@ -100,10 +102,14 @@ export function SiteHeader() {
           </button>
         </div>
       </div>
+    </header>
 
-      {/* mobile full-screen menu */}
+      {/* mobile full-screen menu — kept OUTSIDE <header> so its `fixed`
+          positioning is relative to the viewport. The header's backdrop-blur
+          would otherwise become the containing block and collapse this panel,
+          leaving the links with no visible background. */}
       <div
-        className={`fixed inset-0 top-16 z-40 origin-top bg-background transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 top-16 z-40 flex origin-top flex-col overflow-y-auto bg-background transition-all duration-300 md:hidden ${
           open
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
@@ -125,7 +131,15 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
+
+        {/* social buttons pinned to the bottom of the menu */}
+        <div className="mt-auto border-t border-border px-5 py-8">
+          <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">
+            Follow
+          </p>
+          <SocialLinks className="gap-7" />
+        </div>
       </div>
-    </header>
+    </>
   );
 }

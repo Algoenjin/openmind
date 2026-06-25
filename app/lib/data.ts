@@ -40,10 +40,10 @@ export const releases: Release[] = [
   { cat: "OM047", title: "Surveillance", artist: "Not Your Ordinary Human", year: 2026, format: "12\" / Digital", cover: ["#2b6cff", "#0a0a0a"], image: "/covers/om047-surveillance-nyoh.png", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
   { cat: "OM046", title: "Anomaly", artist: "Not Your Ordinary Human", year: 2026, format: "Digital", cover: ["#ff4a1c", "#0a0a0a"], image: "/covers/om046-anomaly.png", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
   { cat: "OM045", title: "First Light", artist: "Ottman Gronberg", year: 2025, format: "12\" / Digital", cover: ["#7be0ff", "#0a0a0a"], image: "/covers/om045-first-light.png", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" },
-  { cat: "OM044", title: "Halftone", artist: "Inspektorn", year: 2025, format: "Digital", cover: ["#9b5cff", "#0a0a0a"], track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" },
+  { cat: "OM044", title: "Square Up", artist: "Inspektorn", year: 2025, format: "Digital", cover: ["#9b5cff", "#0a0a0a"], image: "/covers/om044-square-up.png", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" },
   { cat: "OM043", title: "Nightform", artist: "Not Your Ordinary Human", year: 2025, format: "12\" / Digital", cover: ["#ff2e87", "#0a0a0a"], image: "/covers/om043-nightform.png", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3" },
   { cat: "OM042", title: "Static Bloom", artist: "Ottman Gronberg & Inspektorn", year: 2025, format: "12\" / Digital", cover: ["#00d18f", "#0a0a0a"], image: "/covers/om042-static-bloom.png", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3" },
-  { cat: "OM041", title: "Voids", artist: "Inspektorn", year: 2024, format: "Digital", cover: ["#c8c8c8", "#0a0a0a"], track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" },
+  { cat: "OM041", title: "Spiral", artist: "Inspektorn", year: 2024, format: "Digital", cover: ["#c8c8c8", "#0a0a0a"], image: "/covers/om041-spiral.png", track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" },
 ];
 
 export type SocialLink = { label: string; href: string };
@@ -88,9 +88,10 @@ export const artists: Artist[] = [
   },
   { slug: "not-your-ordinary-human", name: "Not Your Ordinary Human", base: "Stockholm, Sweden", portrait: ["#ff4a1c", "#0a0a0a"] },
   { slug: "inspektorn", name: "Inspektorn", base: "Stockholm, Sweden", portrait: ["#2b6cff", "#0a0a0a"] },
+  { slug: "ulrika-vincent", name: "Ulrika Vincent", base: "Stockholm, Sweden", portrait: ["#ffb000", "#0a0a0a"] },
   { slug: "junior-lindgren", name: "Junior Lindgren", base: "Stockholm, Sweden", portrait: ["#00d18f", "#0a0a0a"] },
   { slug: "teh-ellis", name: "Teh Ellis", base: "Stockholm, Sweden", portrait: ["#9b5cff", "#0a0a0a"] },
-  { slug: "oliver", name: "Oliver", base: "Stockholm, Sweden", portrait: ["#ff2e87", "#0a0a0a"] },
+  { slug: "oliver", name: "Oliver Hasselblad", base: "Stockholm, Sweden", portrait: ["#ff2e87", "#0a0a0a"] },
   { slug: "chef-and-slave", name: "Chef & Slave", base: "Stockholm, Sweden", portrait: ["#7be0ff", "#0a0a0a"] },
   { slug: "elias-aranciba", name: "Elias Aranciba", base: "Stockholm, Sweden", portrait: ["#ccff00", "#0a0a0a"] },
 ];
@@ -107,13 +108,10 @@ export type Eventt = {
 };
 
 export const events: Eventt[] = [
-  { day: "04", month: "JUL", year: "2026", venue: "Berghain", city: "Berlin", country: "DE", lineup: "Ottman Gronberg, Void Sector", status: "low" },
-  { day: "18", month: "JUL", year: "2026", venue: "Shelter", city: "Amsterdam", country: "NL", lineup: "Subrosa, KILN", status: "tickets" },
-  { day: "01", month: "AUG", year: "2026", venue: "Slakthuset", city: "Stockholm", country: "SE", lineup: "OpenMind Label Night — Full Roster", status: "tickets" },
-  { day: "15", month: "AUG", year: "2026", venue: "Fabric", city: "London", country: "UK", lineup: "Ottman Gronberg, Astrid Falk", status: "sold out" },
-  { day: "05", month: "SEP", year: "2026", venue: "Nitsa", city: "Barcelona", country: "ES", lineup: "Nina Sandström, M-PXL", status: "tickets" },
-  { day: "26", month: "SEP", year: "2026", venue: "Tresor", city: "Berlin", country: "DE", lineup: "Concrete Mass, Helvete", status: "tickets" },
-  { day: "10", month: "OCT", year: "2026", venue: "Contact", city: "Tokyo", country: "JP", lineup: "Ottman Gronberg, Tundra", status: "low" },
+  { day: "26", month: "JUN", year: "2026", venue: "Business Techno", city: "Stockholm", country: "SE", lineup: "Ottman Gronberg, Not Your Ordinary Human, Inspektorn", status: "low" },
+  { day: "24", month: "JUL", year: "2026", venue: "OpenMind Private", city: "Stockholm", country: "SE", lineup: "Line-up coming soon", status: "tickets" },
+  { day: "24", month: "AUG", year: "2026", venue: "Slakthuset", city: "Stockholm", country: "SE", lineup: "OpenMind Label Night", status: "tickets" },
+  { day: "31", month: "OCT", year: "2026", venue: "Fact", city: "Barcelona", country: "ES", lineup: "Ottman Gronberg", status: "tickets" },
 ];
 
 export type Episode = {

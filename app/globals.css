@@ -70,19 +70,30 @@ body {
 }
 
 /* ---- marquee ticker ---- */
+/* Two equal-width groups each scroll a full -100% of their own width, so the
+   trailing group lands exactly where the leading one started — seamless loop. */
 @keyframes marquee {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 .animate-marquee {
-  animation: marquee 32s linear infinite;
+  animation: marquee 64s linear infinite;
 }
 .animate-marquee-fast {
-  animation: marquee 18s linear infinite;
+  animation: marquee 36s linear infinite;
+}
+
+/* Respect reduced-motion preference (WCAG 2.2.2): hold the ticker still
+   so the content stays readable without continuous movement. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-fast {
+    animation: none;
+  }
 }
 
 /* ---- subtle entrance for hero ---- */
