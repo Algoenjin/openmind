@@ -108,7 +108,7 @@ export type Eventt = {
 };
 
 export const events: Eventt[] = [
-  { day: "26", month: "JUN", year: "2026", venue: "Business Techno", city: "Stockholm", country: "SE", lineup: "Ottman Gronberg, Not Your Ordinary Human, Inspektorn", status: "low" },
+  { day: "26", month: "JUN", year: "2026", venue: "Business Techno", city: "Stockholm", country: "SE", lineup: "Ottman Gronberg, Not Your Ordinary Human, Inspektorn, Ulrika Vincent", status: "low" },
   { day: "24", month: "JUL", year: "2026", venue: "OpenMind Private", city: "Stockholm", country: "SE", lineup: "Line-up coming soon", status: "tickets" },
   { day: "24", month: "AUG", year: "2026", venue: "Slakthuset", city: "Stockholm", country: "SE", lineup: "OpenMind Label Night", status: "tickets" },
   { day: "31", month: "OCT", year: "2026", venue: "Fact", city: "Barcelona", country: "ES", lineup: "Ottman Gronberg, Not Your Ordinary Human, Ulrika Vincent", status: "tickets" },
@@ -116,7 +116,7 @@ export const events: Eventt[] = [
 
 /** Past shows — most recent first. */
 export const pastEvents: Eventt[] = [
-  { day: "22", month: "MAY", year: "2026", venue: "Business Techno", city: "Stockholm", country: "SE", lineup: "Not Your Ordinary Human", status: "past" },
+  { day: "22", month: "MAY", year: "2026", venue: "Business Techno", city: "Stockholm", country: "SE", lineup: "Not Your Ordinary Human, Ulrika Vincent", status: "past" },
 ];
 
 export type Episode = {
