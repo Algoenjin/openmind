@@ -60,8 +60,8 @@ export default function Home() {
             <ul className="mt-[1vw] flex flex-col gap-[0.5vw]">
               {[
                 "Ottman Gronberg",
-                "Not Your Ordinary Human",
-                "Inspektorn",
+                "NØH",
+                "Chris Iliou",
                 "Junior Lindgren",
                 "Teh Ellis",
               ].map((name) => (
@@ -94,7 +94,7 @@ export default function Home() {
         items={[
           "New: OM048 — Hypnos",
           "OpenMind Label Night · Stockholm · Aug 01",
-          "Radio 048 Out Now",
+          "Radio — Now in 3 Channels",
           "Demos open",
           "Keep an open mind",
         ]}
@@ -173,14 +173,14 @@ export default function Home() {
               OpenMind Radio
             </p>
             <h2 className="heading mt-3 text-5xl text-foreground sm:text-6xl">
-              The Sound,
+              Three Channels,
               <br />
-              Every Week
+              Always On
             </h2>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-muted">
-              A weekly hour of uncompromising techno — label premieres, guest
-              mixes and deep cuts, hosted by {SITE.founder} and the OpenMind
-              roster.
+              Three always-on channels — Sublevel, Drift and Ascent — streaming
+              techno, house and trance around the clock, curated by{" "}
+              {SITE.founder} and the roster.
             </p>
             <Link
               href="/radio"
@@ -230,7 +230,7 @@ export default function Home() {
       {/* ---------------------------------------------------------- */}
       <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8">
         <SectionHeading
-          eyebrow="Vinyl & Merch"
+          eyebrow="Merch"
           title="Store"
           href="/store"
         />
@@ -250,10 +250,10 @@ export default function Home() {
             Send us your music
           </h2>
           <a
-            href="mailto:demos@openmind.se"
+            href="mailto:demo@openmindpro.com"
             className="border border-accent px-6 py-3 font-mono text-xs uppercase tracking-[0.2em] text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
           >
-            demos@openmind.se
+            demo@openmindpro.com
           </a>
         </div>
       </section>

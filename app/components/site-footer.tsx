@@ -74,7 +74,7 @@ export function SiteFooter() {
               Got a demo?
             </p>
             <a
-              href="mailto:demos@openmind.se"
+              href="mailto:demo@openmindpro.com"
               className="mt-6 inline-flex items-center rounded-full border border-accent px-7 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
             >
               Submit demo

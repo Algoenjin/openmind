@@ -101,7 +101,7 @@ export function EpisodePlayButton({
         className="mt-2 inline-flex w-fit items-center gap-3 bg-accent px-6 py-3 font-mono text-xs font-bold uppercase tracking-[0.2em] text-accent-foreground transition-opacity hover:opacity-90"
       >
         {playing ? <PauseGlyph size={12} /> : <PlayGlyph size={12} />}
-        {playing ? "Pause Episode" : "Play Episode"}
+        {playing ? "Pause" : "Listen Live"}
       </button>
     );
   }

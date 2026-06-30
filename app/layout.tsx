@@ -23,7 +23,7 @@ const anton = Anton({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://openmind.se"),
+  metadataBase: new URL("https://openmindpro.com"),
   title: {
     default: "OpenMind — Underground Techno",
     template: "%s — OpenMind",

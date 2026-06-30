@@ -209,8 +209,10 @@ export function ReleaseCard({ release }: { release: Release }) {
 /*  Product card                                                     */
 /* ---------------------------------------------------------------- */
 export function ProductCard({ product }: { product: Product }) {
+  const photo = product.images?.[0];
+  const contain = product.fit === "contain";
   return (
-    <article className="group cursor-pointer">
+    <Link href={`/store/${product.slug}`} className="group block">
       <div className="relative aspect-square w-full overflow-hidden border border-border">
         <div
           className="absolute inset-0"
@@ -218,9 +220,23 @@ export function ProductCard({ product }: { product: Product }) {
             backgroundImage: `linear-gradient(135deg, ${product.cover[0]} 0%, ${product.cover[1]} 75%)`,
           }}
         />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="heading text-2xl text-foreground/15">OPENMIND</span>
-        </div>
+        {photo ? (
+          <Image
+            src={photo}
+            alt={product.name}
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className={
+              contain
+                ? "object-contain p-6 transition-transform duration-500 group-hover:scale-[1.04]"
+                : "object-cover object-[50%_28%] transition-transform duration-500 group-hover:scale-[1.03]"
+            }
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="heading text-2xl text-foreground/15">OPENMIND</span>
+          </div>
+        )}
         <span className="absolute right-3 top-3 bg-accent px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-accent-foreground">
           {product.price}
         </span>
@@ -233,7 +249,7 @@ export function ProductCard({ product }: { product: Product }) {
           {product.kind}
         </p>
       </div>
-    </article>
+    </Link>
   );
 }
 

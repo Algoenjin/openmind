@@ -4,16 +4,16 @@ import { PageHero, ProductCard } from "../components/ui";
 
 export const metadata: Metadata = {
   title: "Store",
-  description: "OpenMind vinyl, apparel and accessories. Shipped worldwide.",
+  description: "Official OpenMind Pro merch. Shipped worldwide.",
 };
 
 export default function StorePage() {
   return (
     <>
       <PageHero
-        eyebrow="Vinyl & Merch"
+        eyebrow="Merch"
         title="Store"
-        intro="Limited vinyl pressings and official OpenMind apparel. Pressed in small runs, shipped worldwide."
+        intro="Official OpenMind Pro merch, made in small runs and shipped worldwide. This drop is currently sold out — restocks announced first to the mailing list."
       />
       <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8">
         <div className="mb-8 flex items-center justify-between border-b border-border pb-4">

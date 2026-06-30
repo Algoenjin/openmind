@@ -129,7 +129,7 @@ export default async function ArtistPage({
             {/* actions */}
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <a
-                href="mailto:bookings@openmind.se"
+                href="mailto:bookings@openmindpro.com"
                 className="bg-accent px-6 py-3 font-mono text-xs font-bold uppercase tracking-[0.2em] text-accent-foreground transition-opacity hover:opacity-90"
               >
                 Book
@@ -260,10 +260,10 @@ export default async function ArtistPage({
             </p>
           </div>
           <a
-            href="mailto:bookings@openmind.se"
+            href="mailto:bookings@openmindpro.com"
             className="border border-accent px-6 py-3 font-mono text-xs uppercase tracking-[0.2em] text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
           >
-            bookings@openmind.se
+            bookings@openmindpro.com
           </a>
         </div>
       </section>
