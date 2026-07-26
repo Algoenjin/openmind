@@ -10,7 +10,12 @@ import {
   releasesByArtist,
   SITE,
 } from "../../lib/data";
-import { EventRow, ReleaseCard, SectionHeading } from "../../components/ui";
+import {
+  ArtistName,
+  EventRow,
+  ReleaseCard,
+  SectionHeading,
+} from "../../components/ui";
 import { EpisodePlayButton } from "../../components/player/play-button";
 
 // only the slugs below are valid routes; anything else 404s
@@ -96,7 +101,7 @@ export default async function ArtistPage({
               {artist.since ? ` · Since ${artist.since}` : ""}
             </p>
             <h1 className="heading mt-4 text-6xl text-foreground sm:text-7xl lg:text-8xl">
-              {artist.name}
+              <ArtistName name={artist.name} />
             </h1>
             {artist.tagline && (
               <p className="mt-5 max-w-xl text-base leading-relaxed text-muted">
@@ -253,7 +258,7 @@ export default async function ArtistPage({
         <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-6 px-5 py-16 sm:px-8 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="heading text-4xl text-foreground sm:text-5xl">
-              Book {artist.name}
+              Book <ArtistName name={artist.name} />
             </h2>
             <p className="mt-2 text-sm text-muted">
               Worldwide booking enquiries via {SITE.name} management.

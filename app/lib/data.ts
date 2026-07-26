@@ -65,6 +65,7 @@ export type Artist = {
 };
 
 export const artists: Artist[] = [
+  { slug: "santiago-naura", name: "Santiago Naura", base: "Stockholm, Sweden", portrait: ["#00c2ff", "#0a0a0a"] },
   {
     slug: "ottman-gronberg",
     name: "Ottman Gronberg",
@@ -89,11 +90,11 @@ export const artists: Artist[] = [
   { slug: "not-your-ordinary-human", name: "NØH", base: "Stockholm, Sweden", portrait: ["#ff4a1c", "#0a0a0a"] },
   { slug: "inspektorn", name: "Chris Iliou", base: "Stockholm, Sweden", portrait: ["#2b6cff", "#0a0a0a"] },
   { slug: "ulrika-vincent", name: "Ulrika Vincent", base: "Stockholm, Sweden", portrait: ["#ffb000", "#0a0a0a"] },
-  { slug: "junior-lindgren", name: "Junior Lindgren", base: "Stockholm, Sweden", portrait: ["#00d18f", "#0a0a0a"] },
+  { slug: "oliver", name: "Oliver Hasselblad", base: "Barcelona, Spain", portrait: ["#ff2e87", "#0a0a0a"] },
   { slug: "joakim-ohlrogge", name: "Joakim Ohlrogge", base: "Stockholm, Sweden", portrait: ["#7be0ff", "#0a0a0a"] },
   { slug: "teh-ellis", name: "Teh Ellis", base: "Stockholm, Sweden", portrait: ["#9b5cff", "#0a0a0a"] },
-  { slug: "oliver", name: "Oliver Hasselblad", base: "Stockholm, Sweden", portrait: ["#ff2e87", "#0a0a0a"] },
-  { slug: "elias-aranciba", name: "Elias Aranciba", base: "Stockholm, Sweden", portrait: ["#ccff00", "#0a0a0a"] },
+  { slug: "junior-lindgren", name: "Junior Lindgren", base: "Stockholm, Sweden", portrait: ["#00d18f", "#0a0a0a"] },
+  { slug: "ottxnoh", name: "OTTxNØH", base: "Stockholm, Sweden", portrait: ["#ccff00", "#0a0a0a"] },
 ];
 
 export type Eventt = {
@@ -105,11 +106,13 @@ export type Eventt = {
   country: string;
   lineup: string;
   status: "tickets" | "low" | "sold out" | "past";
+  /** slug of the concept this event runs under — see `concepts` */
+  concept?: string;
 };
 
 export const events: Eventt[] = [
-  { day: "25", month: "JUL", year: "2026", venue: "OpenMind OpenAir", city: "Stockholm", country: "SE", lineup: "Line-up coming soon", status: "tickets" },
-  { day: "25", month: "JUL", year: "2026", venue: "OpenMind OpenSpace", city: "Stockholm", country: "SE", lineup: "Line-up coming soon", status: "tickets" },
+  { day: "25", month: "JUL", year: "2026", venue: "OpenMind OpenAir", city: "Stockholm", country: "SE", lineup: "Line-up coming soon", status: "tickets", concept: "air" },
+  { day: "25", month: "JUL", year: "2026", venue: "OpenMind OpenSpace", city: "Stockholm", country: "SE", lineup: "Line-up coming soon", status: "tickets", concept: "space" },
   { day: "28", month: "AUG", year: "2026", venue: "Slakthuset", city: "Stockholm", country: "SE", lineup: "OpenMind Label Night Release Party", status: "tickets" },
   { day: "31", month: "OCT", year: "2026", venue: "Fact", city: "Barcelona", country: "ES", lineup: "Ottman Gronberg, NØH, Ulrika Vincent", status: "tickets" },
 ];
@@ -192,7 +195,7 @@ export const products: Product[] = [
     kind: "Apparel — Black",
     price: "€30",
     cover: ["#1d1d1d", "#0a0a0a"],
-    images: ["/merch/om-pro-tee-2.png", "/merch/om-pro-tee.png"],
+    images: ["/merch/om-pro-tee.png", "/merch/om-pro-tee-2.png"],
     sizes: ["S", "M", "L", "XL", "XXL"],
     description:
       "Classic-fit black tee with the OPENMIND PRO logo printed across the chest. Soft, heavyweight cotton with a clean unisex cut.",
@@ -211,11 +214,183 @@ export const products: Product[] = [
   },
 ];
 
-export const NAV = [
+/* ------------------------------------------------------------------ */
+/*  Event concepts — the recurring formats OpenMind events run under   */
+/* ------------------------------------------------------------------ */
+
+export type Concept = {
+  /** url handle — /events/<slug> */
+  slug: string;
+  name: string;
+  category: string;
+  music: string;
+  setting: string;
+  /** two colors for the hero gradient */
+  colors: [string, string];
+  /** presentation page copy — each string is a paragraph */
+  description: string[];
+};
+
+export const concepts: Concept[] = [
+  {
+    slug: "air",
+    name: "Air",
+    category: "Outdoor daytime",
+    music: "Organic / Afro / melodic house",
+    setting: "Rooftops, parks, beaches",
+    colors: ["#7be0ff", "#0a0a0a"],
+    description: [
+      "Air is OpenMind's daytime open-air concept: organic, Afro and melodic house played under the sun — on rooftops, in parks and on beaches.",
+      "Sets stretch from afternoon into golden hour. Warm percussion, vocals and melody built for daylight dancing rather than the dark of the club — a crowd that arrives early and stays until the light goes.",
+    ],
+  },
+  {
+    slug: "space",
+    name: "Space",
+    category: "Outdoor nighttime",
+    music: "Melodic / progressive techno & trance",
+    setting: "Forests, fields, outdoor stages",
+    colors: ["#9b5cff", "#0a0a0a"],
+    description: [
+      "Space is the night side of OpenMind's open-air programme: melodic and progressive techno and trance staged after dark in forests, fields and on outdoor stages.",
+      "Away from the city there is room for scale — long hypnotic arcs, wide sound and light design under an open sky, from sunset until the early hours.",
+    ],
+  },
+  {
+    slug: "innercity",
+    name: "Innercity",
+    category: "Urban club",
+    music: "House, tech house, melodic techno",
+    setting: "Central city clubs & venues",
+    colors: ["#ccff00", "#0a0a0a"],
+    description: [
+      "Innercity is OpenMind in its natural habitat: house, tech house and melodic techno in central city clubs and venues.",
+      "Tight rooms, proper systems and label artists alongside invited guests — the recurring club night that carries the OpenMind sound through the season.",
+    ],
+  },
+  {
+    slug: "red-carpet",
+    name: "Red Carpet",
+    category: "Luxury house",
+    music: "Vocal / disco / luxury house",
+    setting: "Luxury hotels & premium clubs",
+    colors: ["#ffb000", "#0a0a0a"],
+    description: [
+      "Red Carpet is the label's luxury house concept: vocal, disco and luxury house in luxury hotels and premium clubs.",
+      "Elevated production, hospitality and dress code — an evening built around elegance as much as the dancefloor.",
+    ],
+  },
+  {
+    slug: "connect",
+    name: "Connect",
+    category: "Collaborative",
+    music: "Flexible",
+    setting: "Partner-defined",
+    colors: ["#00d18f", "#0a0a0a"],
+    description: [
+      "Connect is OpenMind's collaborative format — events built together with partners, from brands and venues to festivals and collectives.",
+      "Music and setting are defined per partnership: the partner brings the context, OpenMind brings the curation, production and roster.",
+    ],
+  },
+  {
+    slug: "pulse",
+    name: "Pulse",
+    category: "High-energy",
+    music: "Tech house / peak-time techno",
+    setting: "Large clubs, warehouses",
+    colors: ["#ff4a1c", "#0a0a0a"],
+    description: [
+      "Pulse is the high-energy concept: tech house and peak-time techno in large clubs and warehouses.",
+      "Big rooms, big systems and relentless pacing — the format built for peak hours and full floors.",
+    ],
+  },
+  {
+    slug: "raw",
+    name: "Raw",
+    category: "Underground techno",
+    music: "Raw / hypnotic / industrial techno",
+    setting: "Warehouses, basements",
+    colors: ["#c8c8c8", "#0a0a0a"],
+    description: [
+      "Raw is the underground core of OpenMind: raw, hypnotic and industrial techno in warehouses and basements.",
+      "No frills, minimal light, maximum sound — stripped-back spaces where the music does all the talking.",
+    ],
+  },
+  {
+    slug: "private",
+    name: "Private",
+    category: "Invitation-only",
+    music: "Curated",
+    setting: "Secret & members' spaces",
+    colors: ["#2b6cff", "#0a0a0a"],
+    description: [
+      "Private is invitation-only: curated line-ups in secret locations and members' spaces.",
+      "Details are shared directly with invited guests — locations stay unannounced and capacity stays small.",
+    ],
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Community memberships — pricing tiers on /community                */
+/* ------------------------------------------------------------------ */
+
+export type Membership = {
+  /** stable handle — used as ?plan= in the join flow and as the API tier id */
+  id: string;
+  name: string;
+  price: string;
+  period: string;
+  tagline: string;
+  features: string[];
+  /** visually emphasized tier */
+  featured?: boolean;
+  cta: string;
+};
+
+export const memberships: Membership[] = [
+  {
+    id: "free",
+    name: "Free Member",
+    price: "0 kr",
+    period: "forever",
+    tagline: "Stay in the loop.",
+    features: [
+      "Info on all OpenMind events",
+      "Info on all releases",
+    ],
+    cta: "Join free",
+  },
+  {
+    id: "member",
+    name: "BTS Member",
+    price: "999 kr",
+    period: "per year",
+    tagline: "The inner circle.",
+    features: [
+      "Everything in Free Member",
+      "Access to private parties",
+    ],
+    featured: true,
+    cta: "Become a member",
+  },
+];
+
+export type NavItem = {
+  label: string;
+  href: string;
+  /** dropdown entries rendered under the item */
+  children?: { label: string; href: string }[];
+};
+
+export const NAV: NavItem[] = [
   { label: "Releases", href: "/releases" },
   { label: "Artists", href: "/artists" },
-  { label: "Events", href: "/events" },
-  { label: "Radio", href: "/radio" },
+  {
+    label: "Events",
+    href: "/events",
+    children: concepts.map((c) => ({ label: c.name, href: `/events/${c.slug}` })),
+  },
+  { label: "Community", href: "/community" },
   { label: "Store", href: "/store" },
 ];
 
@@ -229,6 +404,15 @@ export function getArtist(slug: string): Artist | undefined {
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
+}
+
+export function getConcept(slug: string): Concept | undefined {
+  return concepts.find((c) => c.slug === slug);
+}
+
+/** Upcoming events running under a concept. */
+export function eventsByConcept(slug: string): Eventt[] {
+  return events.filter((e) => e.concept === slug);
 }
 
 /** Releases credited to an artist (matches collaborations too). */

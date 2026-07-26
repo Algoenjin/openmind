@@ -42,24 +42,77 @@ export function SiteHeader() {
 
         {/* desktop nav */}
         <nav className="hidden items-center gap-8 md:flex">
-          {NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`group relative font-mono text-xs uppercase tracking-[0.2em] transition-colors ${
-                isActive(item.href)
-                  ? "text-accent"
-                  : "text-muted hover:text-foreground"
-              }`}
-            >
-              {item.label}
-              <span
-                className={`absolute -bottom-1.5 left-0 h-px bg-accent transition-all duration-300 ${
-                  isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
+          {NAV.map((item) =>
+            item.children ? (
+              /* item with a dropdown — panel opens on hover/focus */
+              <div key={item.href} className="group relative">
+                <Link
+                  href={item.href}
+                  className={`relative flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.2em] transition-colors ${
+                    isActive(item.href)
+                      ? "text-accent"
+                      : "text-muted group-hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 10 6"
+                    className="h-1.5 w-2.5 fill-none stroke-current transition-transform duration-200 group-hover:rotate-180"
+                  >
+                    <path d="M1 1l4 4 4-4" strokeWidth="1.5" />
+                  </svg>
+                  <span
+                    className={`absolute -bottom-1.5 left-0 h-px bg-accent transition-all duration-300 ${
+                      isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </Link>
+
+                {/* pt-4 bridges the gap to the trigger so hover survives the move */}
+                <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div className="w-56 border border-border bg-background/95 backdrop-blur">
+                    <Link
+                      href={item.href}
+                      className="block border-b border-border px-5 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors hover:text-accent"
+                    >
+                      All Events
+                    </Link>
+                    {item.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        className={`block px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors ${
+                          isActive(c.href)
+                            ? "text-accent"
+                            : "text-muted hover:text-accent"
+                        }`}
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`group relative font-mono text-xs uppercase tracking-[0.2em] transition-colors ${
+                  isActive(item.href)
+                    ? "text-accent"
+                    : "text-muted hover:text-foreground"
                 }`}
-              />
-            </Link>
-          ))}
+              >
+                {item.label}
+                <span
+                  className={`absolute -bottom-1.5 left-0 h-px bg-accent transition-all duration-300 ${
+                    isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
+              </Link>
+            )
+          )}
         </nav>
 
         {/* right side: live pill + mobile toggle */}
@@ -117,18 +170,34 @@ export function SiteHeader() {
       >
         <nav className="flex flex-col px-5 pt-4">
           {NAV.map((item, i) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`heading flex items-center justify-between border-b border-border py-6 text-5xl transition-colors ${
-                isActive(item.href) ? "text-accent" : "text-foreground"
-              }`}
-            >
-              {item.label}
-              <span className="font-mono text-xs tracking-widest text-muted">
-                0{i + 1}
-              </span>
-            </Link>
+            <div key={item.href} className="border-b border-border">
+              <Link
+                href={item.href}
+                className={`heading flex items-center justify-between py-6 text-5xl transition-colors ${
+                  isActive(item.href) ? "text-accent" : "text-foreground"
+                }`}
+              >
+                {item.label}
+                <span className="font-mono text-xs tracking-widest text-muted">
+                  0{i + 1}
+                </span>
+              </Link>
+              {item.children && (
+                <div className="grid grid-cols-2 gap-x-6 pb-6">
+                  {item.children.map((c) => (
+                    <Link
+                      key={c.href}
+                      href={c.href}
+                      className={`py-2 font-mono text-xs uppercase tracking-[0.2em] transition-colors ${
+                        isActive(c.href) ? "text-accent" : "text-muted"
+                      }`}
+                    >
+                      {c.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 

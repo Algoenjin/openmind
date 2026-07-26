@@ -43,6 +43,28 @@ export function PageHero({
 }
 
 /* ---------------------------------------------------------------- */
+/*  Artist name — the lowercase "x" in collab names (OTTxNØH)        */
+/*  renders smaller than the surrounding letters, on the baseline    */
+/* ---------------------------------------------------------------- */
+export function ArtistName({ name }: { name: string }) {
+  const parts = name.split(/(?<=\p{Lu})(x)(?=\p{Lu})/u);
+  if (parts.length === 1) return <>{name}</>;
+  return (
+    <>
+      {parts.map((part, i) =>
+        part === "x" ? (
+          <span key={i} className="text-[0.7em]">
+            {part}
+          </span>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
+
+/* ---------------------------------------------------------------- */
 /*  Marquee ticker                                                   */
 /* ---------------------------------------------------------------- */
 export function Marquee({

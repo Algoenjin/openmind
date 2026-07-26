@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { artists } from "../lib/data";
-import { PageHero } from "../components/ui";
+import { ArtistName, PageHero } from "../components/ui";
 
 export const metadata: Metadata = {
   title: "Artists",
@@ -28,7 +28,7 @@ export default function ArtistsPage() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="heading flex-1 text-4xl text-foreground transition-colors group-hover:text-accent sm:text-6xl">
-                  {a.name}
+                  <ArtistName name={a.name} />
                 </span>
                 <span className="hidden text-right font-mono text-[10px] uppercase tracking-[0.2em] text-muted sm:block">
                   {a.base}
